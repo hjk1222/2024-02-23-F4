@@ -18,6 +18,21 @@ body{
 .logo{}
 .logo a{}
 .logo a img{}
+
+.nav{}
+.main{}
+.main > li{}
+.main > li > a{}
+.main > li:hover a{}
+
+.sub{}
+.sub li{}
+.sub li a{}
+.sub li a:hover{}
+
+
+
+
 .slide_img{
     width: 100%;
     height: 350px;

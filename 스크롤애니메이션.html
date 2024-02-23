@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤애니메이션</title>
+    <script src="jQuery/jquery-1.12.3.js"></script>
+    <script lang="java">
+        
+        $(function(){
+            var w1 = $(".demo").width();
+            $(".demo").text(w1);
+
+            $(window).resize(function(){
+                w1 = $(".demo").width();
+                $(".demo").text(w1);
+
+                // 리사이즈가 되면 윈도우의 백그라운드를 바꾸기도
+
+            })//
+        })//jquery
+
+
+        $(window).scroll(function(){
+            var top = $(this).scrollTop();
+            console.log(top);
+
+            if(top>1){ //스크롤탑에서 1픽셀만 움직여도 반응
+                // $(".cont1_inner").stop().animate({left:"0", opacity: "1"}, 500)
+                
+                $(".cont1_inner").addClass("on");
+            }else{
+                // $(".cont1_inner").stop().animate({left:"-800", opacity: "0"}, 500)
+                $(".cont1_inner").removeClass("on");
+            }//
+
+            if(top>250){ //스크롤탑으로부터 250 만큼 올라가면 반응
+                // $(".cont1_inner").stop().animate({left:"0", opacity: "1"}, 500)
+                $(".cont2_inner").addClass("on");
+            }else{
+                // $(".cont1_inner").stop().animate({left:"-800", opacity: "0"}, 500)
+                $(".cont2_inner").removeClass("on");
+            }
+
+
+            // [if문을 줄여쓰려면 탑스크롤이 큰 값 부터]
+            // if(top>250){
+            //     $(".cont2_inner").addClass("on");
+            // }else if(top>1){
+            //     $(".cont2_inner").removeClass("on");
+            //     $(".cont1_inner").addClass("on");
+
+            // }else{
+            //     $(".cont1_inner").removeClass("on");
+            // }
+
+
+        })//스크롤이벤트에 대한 명령어.
+
+    </script>
+    <style type="text/css">
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        .container{
+            max-width: 1200px;
+            width: 100%;    
+            margin: 0 auto; 
+        }
+        .container img{
+            width: 100%;
+
+        }
+        .cont1{
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgb(155, 123, 123);
+        }
+        .cont1 .cont1_inner{
+            width: 800px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: -800px;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+        .cont1_inner.on{
+            left:0; opacity: 1;
+        }
+
+        .cont2{
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-color: tan;
+        }
+        .cont2 .cont2_inner{
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .cont2_inner.on{
+            opacity: 1;
+        }
+
+        .demo{
+            width: 80%;
+            height: 100px;
+            border: 1px solid red;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+
+        }
+
+        
+
+    </style>
+</head>
+
+
+
+<body>
+    <div class="container">
+        <div class="cont1">
+            <div class="cont1_inner">
+                <img src="img/pc_pondy-62eb30.jpg" alt="cont1_img">
+            </div> <!-- cont1_inner -->
+        </div> <!-- cont1 -->
+        <div class="cont2">
+            <div class="cont2_inner">
+                <img src="img/_비터스윗 크리스틴.jpg" alt="cont2_img">
+            </div> <!-- cont1_inner -->
+        </div> <!-- cont1 -->
+        <div class="cont3">
+            <div class="cont3_inner">
+                <img src="img/_원앤온리 크리스틴.jpg" alt="cont3_img">
+            </div> <!-- cont1_inner -->
+        </div> <!-- cont1 -->
+        <div class="cont4">
+            <div class="cont4_inner">
+                <img src="img/슈거하이신제품_pcbn-d32d2f.jpg" alt="cont4_img">
+            </div> <!-- cont1_inner -->
+        </div> <!-- cont1 -->
+        <div class="cont5">
+            <div class="cont5_inner">
+                <img src="img/_퍼스트러브 크리스틴.jpg" alt="cont5_img">
+            </div> <!-- cont1_inner -->
+        </div> <!-- cont1 -->
+    </div> <!-- container -->
+
+    
+    <!-- 리사이즈 -->
+    <p class="demo"> 123456</p>
+</body>
+</html>
